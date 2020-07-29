@@ -19,6 +19,7 @@ a wrapper that:
  - adds every staged modification, additions, etc
  - commits (by argument or default)
  - and pushes
+
 all in one command
 
 ## githook
