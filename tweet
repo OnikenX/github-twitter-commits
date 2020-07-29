@@ -1,3 +1,4 @@
 #!/bin/bash
-
-echo -e '\nt '$@'\nexit()' | rainbowstream > /dev/null
+all=$(cat)
+printf "$all"
+echo -e '\nt '$all'\nexit()' | rainbowstream
