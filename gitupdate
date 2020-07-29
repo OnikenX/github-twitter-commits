@@ -1,10 +1,8 @@
 #!/bin/bash
-git add -A
 if ! git add -A
 then
 	echo this is not a git directory
 fi
-
 if git status | grep -q "Changes to be committed"
 then
 	if [[ $# == 0 ]]
