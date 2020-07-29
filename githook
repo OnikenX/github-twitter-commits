@@ -12,5 +12,5 @@ then
 		echo took longer than 60 seconds, bye bye
 		break
 	fi
-echo Commited:\"$(git log -1 | tail -n +5)\" in $(git remote get-url origin) | tweet
+echo Commited: \"$(git log -1 | tail -n +5 | cut -c 5-)\" in $(git remote get-url origin) | tweet
 fi
