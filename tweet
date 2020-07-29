@@ -1,4 +1,8 @@
 #!/bin/bash
-all=$(cat)
-printf "$all"
-echo -e '\nt '$all'\nexit()' | rainbowstream
+if [[ $# == 0 ]]
+then
+	all=$(cat)
+else
+	all=$@
+fi
+printf "\nt $all\nexit()" | rainbowstream

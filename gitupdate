@@ -1,0 +1,15 @@
+#!/bin/bash
+git add -A
+if git status | grep -q "Changes to be committed"
+then
+	if [[ $# == 0 ]]
+	then
+		git commit
+	else
+		git commit -m "$@"
+	fi
+	if [[ $? == 0 ]]
+	then
+		git push
+	fi
+fi

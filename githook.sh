@@ -1,18 +1,18 @@
 #!/bin/bash
-CONT=0
-for a in $@
-do
-	git $@
-	erro=$?
-	if [[ $erro != 0 ]] 
+git $@
+erro=$?
+if [[ $erro != 0 ]] 
+then
+	exit $erro
+fi
+if [[ $1 == "push" ]]
+then
+	if [[ $(expr $(date +%s) - $(git log -1 --date=raw | tail -n +3 | replace ' ' '' | replace Date: '' | cut -d '+' -f -1 | head -n 1)) > 60 ]]
 	then
-		echo erro $erro ocorreu
+		echo maior que 60 segundos
 		break
+	else
+		echo dentro do minuto
 	fi
-	if [[ $a == "push" ]]
-	then
-		git remote get-url origin | replace 'https://github.com/' '' | replace '.git' '' # getting the repo name
-		echo $(git remote get-url origin | replace '.git' ''| replace 'github.com' 'api.github.com')/commits
-	fi
-	break;
-done
+echo Commited:\"$(git log -1 | tail -n +5)\" in $(git remote get-url origin) | tweet
+fi
