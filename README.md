@@ -23,4 +23,4 @@ all in one command
 
 ## githook
 
-A man-in-the-middle program for git, that sends every command to git and if `git push` is called and sends a tweet with `tweet`.
+A man-in-the-middle program for git, that sends every command to git and if `git push` is called it sends a tweet with `tweet`.
