@@ -1,28 +1,26 @@
 #!/bin/bash
+#OnikenX#
+
 git $@
 erro=$?
-if [[ $erro != 0 ]] 
-then
+if [[ $erro != 0 ]]; then
 	exit $erro
 fi
-if [[ $1 == "push" ]]
-then
-	if [[ $(expr $(date +%s) - $(git log -1 --date=raw | tail -n +3 | replace ' ' '' | replace Date: '' | cut -d '+' -f -1 | head -n 1)) > 60 ]]
-	then
+if [[ $1 == "push" ]]; then
+	if [[ $(expr $(date +%s) - $(git log -1 --date=raw | tail -n +3 | replace ' ' '' | replace Date: '' | cut -d '+' -f -1 | head -n 1)) > 60 ]]; then
 		echo took longer than 60 seconds, bye bye
 		exit 1
 	fi
 
-#testing what where to send
-if which rainbowstream > /dev/null 2> /dev/null
-then
-    sendto='rainbowstream'
-elif which tweet-client > /dev/null 2> /dev/null
-    sendto='tweet-client'
-else
-	echo there is no way to send the tweet so for that yeet
-	exit 1
+	#testing what where to send
+	if ! which rainbowstream >/dev/null 2>/dev/null; then
+		sendto='rainbowstream'
+	elif which tweet-client >/dev/null 2>/dev/null; then
+		sendto='tweet-client'
+	else
+		echo 'there is no way to send the tweet so for that yeet (or you can send it manually)'
+		sendto='cat'
+	fi
+
+	echo Commited: \"$(git log -1 | tail -n +5 | cut -c 5-)\" in $(git remote get-url origin | replace 'git@github.com:' 'https://github.com/' | replace '.git' '') | $sendto
 fi
-
-echo Commited: \"$(git log -1 | tail -n +5 | cut -c 5-)\" in $(git remote get-url origin | replace 'git@github.com:' 'https://github.com/' | replace '.git' '') | sendto
-
