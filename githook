@@ -14,7 +14,7 @@ if [[ $1 == "push" ]]; then
 
 	#testing what where to send
 	if which rainbowstream >/dev/null 2>/dev/null; then
-		sendto='rainbowstream'
+		sendto='tweet'
 	elif which tweet-client >/dev/null 2>/dev/null; then
 		sendto='tweet-client'
 	else
