@@ -1,9 +1,9 @@
 #!/bin/bash
 #OnikenX#
-if ! which rainbowstream > /dev/null 2> /dev/null
+if which rainbowstream > /dev/null 2> /dev/null
 then
     sendto='rainbowstream'
-elif ! which tweet-client > /dev/null 2> /dev/null
+elif which tweet-client > /dev/null 2> /dev/null
 then
     sendto='tweet-client'
 else
