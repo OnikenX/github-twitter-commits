@@ -51,4 +51,4 @@ The client is needs the server ip, if it is not the default it will ask for the 
 
 ## TODO
 
-- A makefile to turn the installation easier
+- A makefile to turn the installation easier.
