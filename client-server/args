@@ -1,0 +1,8 @@
+#!/bin/python
+import sys
+import getopt
+SERVER = '192.168.1.8'
+INPUT = ' '
+while INPUT[0].lower() != 'y' and INPUT[0].lower() != 'n' :
+    INPUT = input(f'is this the ip [{SERVER}][y/n]')
+print(f"args[{len(sys.argv)}] = {str(sys.argv[1])}")
