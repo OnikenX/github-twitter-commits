@@ -11,6 +11,10 @@ The programs that are needed are:
 - `gitupdate` (linked with the name `gitup`)
 - if you don't have rainbowstream in the repository machine add the `tweet-client.py` as `tweet-client`
 
+## rainbowstream patch
+
+rainbow.py is a patched version of rainbowstream to get a multiline and unix support. 
+
 ## Programs
 
 ### tweet

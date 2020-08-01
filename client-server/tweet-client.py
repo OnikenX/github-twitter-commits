@@ -5,13 +5,17 @@ import socket
 
 HEADER = 64
 PORT = 5050
-SERVER = "192.168.1.8"
+SERVER = "192.168.1.10"
 ADDR = (SERVER, PORT)
 FORMAT='utf-8'
 DISCONNECT_MESSAGE = "!DISCONNECT"
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 connected = False
+
+def close():
+    send(DISCONNECT_MESSAGE)
+    client.close()
 
 while connected == False:
     try:    
@@ -32,7 +36,10 @@ def send(msg):
     client.send(send_length)
     client.send(message)
 
-INPUT = input('Tweet: ')
+try:
+    INPUT = input('Tweet: ')
+except:
+    close()
+
 send(INPUT)
-send(DISCONNECT_MESSAGE)
-client.close()
+close()
