@@ -27,5 +27,5 @@ if [[ $1 == "push" ]]; then
 		sendto='cat'
 	fi
 	
-	echo Commited: \"$(git log -1 | tail -n +5 | cut -c 5-)\" in $(git remote get-url origin | replace 'git@github.com:' 'https://github.com/' | replace '.git' '') | $sendto
+	printf "Commited:\n$(git log -1 | tail -n +5 )\nin $(git remote get-url origin | replace 'git@github.com:' 'https://github.com/' | replace '.git' '')" | $sendto
 fi
