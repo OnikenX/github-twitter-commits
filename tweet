@@ -1,5 +1,4 @@
 #!/bin/bash
-getop 
 if [[ $# == 0 ]]
 then
 	all=$(cat)
